@@ -1,0 +1,902 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-container {
+    display: flex;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.content-area {
+    flex: 1;
+    margin-right: 30px;
+}
+
+.sidebar {
+  width: 300px;
+  border-left: 1px solid #e5e5e5; 
+  padding-left: 20px; 
+}
+
+/* Navbar Styles - Using your code */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    height: 45px;
+    width: 100%;
+    justify-content: center; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+    background-color: #7d2222;
+    border-radius: 5px;
+}
+
+.logo img {
+    height: 40px;
+    width: 130px;
+}
+
+.nav-item {
+    color: white;
+    padding: 0 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-right: 0; 
+}
+
+.nav-item:hover {
+    background-color: #555;
+}
+
+.divider {
+    width: 1px;
+    height: 100%;
+    background-color: #000000;
+    margin: 0;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 15px;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+ 
+.search-bar {
+    height: 30px;
+    width: 450px;
+    border-radius: 4px;
+    background-color: #e1e1e1;
+    border: none;
+    padding: 0 30px 0 10px; 
+}
+
+.search-icon {
+    position: absolute;
+    right: 13px; 
+    color: #666;
+    font-size: 14px;
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.sign-in {
+    color: white;
+    padding: 0 19px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid white;
+    margin-right: 25px;
+}
+
+.create-account {
+    background-color: #9e2a2a;
+    color: white;
+    padding: 0 15px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.upload-button {
+    color: rgb(170, 170, 170);
+    padding: 0 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 17px;
+    margin-right: 10px;
+}
+
+.more-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 25px;
+    cursor: pointer;
+    color: white;
+}
+
+.more-menu i {
+    font-size: 25px;
+    color: white;
+}
+
+.more-menu:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+.search-bar::placeholder {
+    color: #8d8d8d;
+    opacity: 1; 
+}
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Section Styles */
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.recommendations, .recently-played {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tracks-container {
+    position: relative;
+}
+
+.track-cards-wrapper {
+    display: flex;
+    overflow-x: hidden;
+    gap: 15px;
+    margin-right: 10px;
+}
+
+.track-card {
+  width: 170px;
+  flex-shrink: 0;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.track-artwork {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #222;
+}
+
+.track-artwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.related-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 10px;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    height: 100%;
+    transform: rotate(180deg);
+}
+
+.track-info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%; /* Ensure it takes full width of the parent */
+}
+
+.track-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  display: block; /* Ensures proper block-level behavior */
+}
+
+.track-artist {
+  font-size: 12px;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  display: block; /* Ensures proper block-level behavior */
+}
+
+.track-cards-wrapper:last-child .track-card:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.content-area > section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 8%;
+  background-color: white;
+  border: 1px solid #b2b2b2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #333;
+  transition: all 0.2s ease;
+  z-index: 10; 
+}
+
+
+.nav-arrow:hover {
+  color: #9e2a2a; /* White icon on hover */
+  border-color: #9e2a2a; /* Red border on hover */
+}
+
+
+
+/* Sidebar Styles */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.sidebar-header h3 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.refresh-link, .view-all {
+    font-size: 12px;
+    color: #999;
+}
+
+.refresh-link:hover, .view-all:hover {
+    color: #333;
+}
+
+.artist-tools, .artists-follow, .likes-section {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+/* Artist Tools Specific */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.tool-icon {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #333;
+}
+
+.tool-item p {
+    font-size: 12px;
+}
+
+.promo-banner {
+    background-color: #f0f0ff;
+    border-radius: 3px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.promo-banner i {
+    color: #6c75ff;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* Artist List Specific */
+.artists-follow {
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+}
+
+.artist-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.artist-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.artist-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.artist-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artist-info {
+    flex: 1;
+}
+
+.artist-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.verified {
+    color: #0066cc;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.artist-stats {
+    display: flex;
+    font-size: 12px;
+    color: #999;
+}
+
+.artist-stats span {
+    margin-right: 10px;
+}
+
+.follow-btn {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.follow-btn:hover {
+    border-color: #999;
+    background-color: #f8f8f8;
+}
+
+/* Likes Section Specific */
+.liked-track {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.liked-track:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.track-artwork.small {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.track-details {
+    flex: 1;
+}
+
+.track-stats {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.track-stats span {
+    margin-right: 10px;
+}
+
+
+/* Position relative for the track-artwork to contain absolute elements */
+.track-artwork {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background-color: #222;
+  cursor: pointer;
+}
+
+/* Dark overlay on hover */
+.track-artwork::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+/* Show the overlay on hover */
+.track-artwork:hover::before {
+  opacity: 1;
+}
+
+/* Play button styles */
+.track-artwork .track-play-pause {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  background-color: #9e2a2a; 
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.track-artwork {
+  color: white;
+  font-size: 22px;
+}
+
+.track-play-pause i {
+    color: white;
+    font-size: 30px;
+}
+/* Bottom controls container */
+.track-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Heart/love icon */
+.track-controls .love-button {
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.track-controls .love-button:hover {
+  color: #9e2a2a;
+}
+
+/* Three-dot menu icon */
+.track-controls .more-options {
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.track-controls .more-options:hover {
+  color: #9e2a2a;
+}
+
+/* Show controls on hover */
+.track-artwork:hover .track-play-pause,
+.track-artwork:hover .track-controls {
+  opacity: 1;
+}
+
+/* Optional: Add hover effect to the play button */
+.track-artwork .track-play-pause:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: #9e2a2a;
+}
+
+/* Track title at the bottom - if you want to keep it */
+.track-artwork .hover-title {
+  position: absolute;
+  bottom: 40px; /* Position above the controls */
+  left: 0;
+  width: 100%;
+  padding: 5px 12px;
+  color: white;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  text-align: left;
+  font-weight: 600;
+}
+
+.track-artwork:hover .hover-title {
+  opacity: 1;
+}
+
+/* Music player */
+.music-player {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f7f7f7;
+    border-top: 1px solid #e5e5e5;
+    padding: 7px;
+    z-index: 100;
+    height: 50px;
+}
+
+.player-controls {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.control-btn:hover {
+    color: #9e2a2a;
+}
+
+.control-btn.play-pause {
+    width: 24px;
+    height: 24px;
+}
+
+.control-btn.shuffle, .control-btn.repeat {
+    opacity: 0.7;
+}
+
+.current-time{
+    color: #9e2a2a;
+    font-size: 12px;
+    min-width: 16px;
+    margin-left: 13px;
+}
+
+.total-time {
+    color: #000000;
+    font-size: 12px;
+    min-width: 16px;
+    margin-right: 13px;
+}
+
+
+.song-info {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 20px;
+    width: 195px; 
+    flex-shrink: 0;
+}
+
+.song-info img {
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    margin-right: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+    width: calc(100% - 50px);
+}
+
+.song-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.song-artist {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.song-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.song-action-btn {
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.song-action-btn:hover {
+    color: #9e2a2a;
+}
+
+/* Volume control can be added if needed */
+.volume-control {
+    position: relative;
+    width: 80px;
+    height: 4px;
+    background-color: #e0e0e0;
+    margin-left: 5px;
+    border-radius: 2px;
+}
+
+.volume-level {
+    height: 100%;
+    width: 70%;
+    background-color: #9e2a2a;
+    border-radius: 2px;
+}
+
+/* Volume control styles */
+/* Simpler volume control with JS toggle */
+/* Add this to your existing CSS */
+.volume-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Create an invisible corridor for smoother slider access */
+.volume-container::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 30px; /* Height of the invisible corridor */
+    pointer-events: none; /* So it doesn't interfere with other elements */
+}
+
+.volume-slider {
+    position: absolute;
+    bottom: 30px;
+    left: 30%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 100px;
+    background-color: #f7f7f7;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    display: none; 
+    padding: 8px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 200;
+    justify-content: center;
+}
+
+.volume-bar {
+    width: 5px;
+    height: 85px;
+    background-color: #e0e0e0;
+    position: relative;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.volume-level {
+    width: 100%;
+    background-color: #9e2a2a;
+    position: absolute;
+    bottom: 0; /* Start from bottom */
+    border-radius: 2px;
+}
+
+/* Container for the progress bar */
+.progress-bar {
+    width: 50%;
+    height: 5px;
+    background-color: #e0e0e0;
+    position: relative;
+    border-radius: 50px;
+  }
+  
+  /* The slider/thumb of the range input */
+  .seek-bar {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+  
+  /* Custom styling for the track - the background part */
+  .seek-bar::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #9e2a2a var(--value, 0%), #e0e0e0 var(--value, 0%));
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  /* Style for the thumb/handle */
+  .seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.seek-bar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border-radius: 0;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+}
+  

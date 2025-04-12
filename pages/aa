@@ -1,0 +1,439 @@
+ <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Artists You Should Follow Section -->
+            <div class="artists-follow">
+            <div class="sidebar-header">
+                <h5>ARTISTS YOU SHOULD FOLLOW</h5>
+                <a href="#" class="refresh-link">Refresh list</a>
+            </div>
+    
+                <div class="artist-list">
+                    <div class="artist-item">
+                        <div class="artist-avatar">
+                            <img src="../assets/images/artists/scuttal.jpg" alt="Scuttal">
+                        </div>
+                        <div class="artist-info">
+                            <p class="artist-name">Scuttal</p>
+                            <div class="artist-stats">
+                                <span><i class="fas fa-user"></i> 173</span>
+                                <span><i class="fas fa-music"></i> 33</span>
+                            </div>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                    
+                    <div class="artist-item">
+                        <div class="artist-avatar">
+                            <img src="../assets/images/artists/gstart.jpg" alt="Gstart">
+                        </div>
+                        <div class="artist-info">
+                            <p class="artist-name">Gstart</p>
+                            <div class="artist-stats">
+                                <span><i class="fas fa-user"></i> 101</span>
+                                <span><i class="fas fa-music"></i> 7</span>
+                            </div>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                    
+                    <div class="artist-item">
+                        <div class="artist-avatar">
+                            <img src="../assets/images/artists/kaden.jpg" alt="Kaden Seigler">
+                        </div>
+                        <div class="artist-info">
+                            <p class="artist-name">Kaden Seigler <i class="fas fa-check-circle verified"></i></p>
+                            <div class="artist-stats">
+                                <span><i class="fas fa-user"></i> 1,996</span>
+                                <span><i class="fas fa-music"></i> 62</span>
+                            </div>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Likes Section -->
+            <div class="likes-section">
+                <div class="sidebar-header">
+                    <h3>55 LIKES</h3>
+                    <a href="#" class="view-all">View all</a>
+                </div>
+                
+                <div class="liked-tracks">
+                    <div class="liked-track">
+                        <div class="track-artwork small">
+                            <img src="../assets/images/tracks/em-cua-qua-khu.jpg" alt="Em Của Quá Khứ">
+                        </div>
+                        <div class="track-details">
+                            <p class="track-artist">Trần Trà</p>
+                            <p class="track-title">Em Của Quá Khứ - Nguyen Dinh Vu</p>
+                            <div class="track-stats">
+                                <span><i class="fas fa-play"></i> 4.68M</span>
+                                <span><i class="fas fa-heart"></i> 20.2K</span>
+                                <span><i class="fas fa-retweet"></i> 524</span>
+                                <span><i class="fas fa-comment"></i> 331</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="liked-track">
+                        <div class="track-artwork small">
+                            <img src="../assets/images/tracks/erik.jpg" alt="Chạm Đáy Nỗi Đau">
+                        </div>
+                        <div class="track-details">
+                            <p class="track-artist">ERIK</p>
+                            <p class="track-title">Chạm Đáy Nỗi Đau</p>
+                            <div class="track-stats">
+                                <span><i class="fas fa-play"></i> 2.37M</span>
+                                <span><i class="fas fa-heart"></i> 17.7K</span>
+                                <span><i class="fas fa-retweet"></i> 432</span>
+                                <span><i class="fas fa-comment"></i> 405</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recently Played section -->
+        <section class="recently-played">
+            <h3 class="section-title">Recently Played</h3>
+            <div class="tracks-container">
+                <div class="track-cards-wrapper">
+                    <!-- Track cards -->
+                    <div class="track-card">
+                        <div class="track-artwork">
+                            <img src="../assets/images/tracks/16typh.jpg" alt="16 Typh - [HIDDEN EP]">
+                            <div class="related-tag">RELATED TRACKS</div>
+                        </div>
+                        <div class="track-info">
+                            <h3 class="track-title">16 Typh - [HIDDEN EP]</h3>
+                            <p class="track-artist">Ginvanga, T-Bag, Thompson</p>
+                        </div>
+                    </div>
+                <button class="nav-arrow next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy các phần tử cần thiết
+            const audioPlayer = new Audio();
+            const playPauseBtn = document.querySelector('.play-pause');
+            const skipBackBtn = document.querySelector('.skip-back');
+            const skipForwardBtn = document.querySelector('.skip-forward');
+            const progressBar = document.querySelector('.progress');
+            const progressBarContainer = document.querySelector('.progress-bar');
+            const currentTimeDisplay = document.querySelector('.current-time');
+            const totalTimeDisplay = document.querySelector('.total-time');
+            const volumeBtn = document.querySelector('.volume');
+            const songTitle = document.querySelector('.song-title');
+            const songArtist = document.querySelector('.song-artist');
+            const songCover = document.querySelector('.song-info img');
+            
+            // Đảm bảo audioPlayer được đặt preload để tải metadata trước
+            audioPlayer.preload = 'metadata';
+            
+            // Tìm progress knob có sẵn hoặc tạo mới nếu chưa có
+            let progressKnob = progressBarContainer.querySelector('.progress-knob');
+            if (!progressKnob) {
+                progressKnob = document.createElement('div');
+                progressKnob.className = 'progress-knob';
+                progressBarContainer.appendChild(progressKnob);
+            }
+            
+            // Biến để theo dõi trạng thái kéo
+            let isDragging = false;
+            // Biến lưu trạng thái đang phát trước khi kéo
+            let wasPlaying = false;
+              
+            // Track hiện tại
+            let currentTrack = {
+                title: '',
+                artist: '',
+                cover: '',
+                file: ''
+            };
+              
+            // Danh sách các track - cập nhật với các file thực tế từ cấu trúc thư mục của bạn
+            const tracks = [
+                {
+                    title: 'Sắp Nổi Tiếng',
+                    artist: 'HIEUTHUHAI',
+                    cover: '../assets/images/poster1.jfif',
+                    file: '../assets/music/NOLOVENOLIFE.mp3'
+                },
+            ];
+            
+            // Hàm để cập nhật UI của music player
+            function updatePlayerUI(track) {
+                songTitle.textContent = track.title;
+                songArtist.textContent = track.artist;
+                songCover.src = track.cover;
+                songCover.alt = track.title;
+            }
+        
+            // Hàm để load và phát track
+            function loadAndPlayTrack(track) {
+                currentTrack = track;
+                audioPlayer.src = track.file;
+                audioPlayer.load();
+                
+                // Đăng ký sự kiện canplay để đảm bảo audio đã sẵn sàng trước khi phát
+                audioPlayer.addEventListener('canplay', function onCanPlay() {
+                    audioPlayer.play()
+                        .then(() => {
+                            // Đổi nút play thành pause
+                            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        })
+                        .catch(error => {
+                            console.error('Error playing track:', error);
+                        });
+                    // Xóa event listener sau khi đã xử lý
+                    audioPlayer.removeEventListener('canplay', onCanPlay);
+                });
+                
+                updatePlayerUI(track);
+            }
+            
+            // Xử lý sự kiện khi nhấn nút play-button trên track-card
+            const trackPlayButtons = document.querySelectorAll('.track-card .play-button');
+            trackPlayButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    // Kiểm tra xem có đủ tracks không
+                    if (index < tracks.length) {
+                        loadAndPlayTrack(tracks[index]);
+                    } else {
+                        console.error('Track không tồn tại trong danh sách');
+                    }
+                });
+            });
+            
+            // Xử lý sự kiện khi nhấn nút play/pause trên music player
+            playPauseBtn.addEventListener('click', function() {
+                if (audioPlayer.paused) {
+                    audioPlayer.play()
+                        .then(() => {
+                            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        })
+                        .catch(err => {
+                            console.error('Error playing audio:', err);
+                        });
+                } else {
+                    audioPlayer.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            
+            // Đăng ký sự kiện loadedmetadata để biết khi audio đã sẵn sàng
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                console.log('Audio metadata loaded, duration:', audioPlayer.duration);
+                totalTimeDisplay.textContent = formatTime(audioPlayer.duration);
+            });
+            
+            // Cập nhật thanh progress, thời gian và vị trí của knob
+            audioPlayer.addEventListener('timeupdate', function() {
+                const currentTime = audioPlayer.currentTime;
+                const duration = audioPlayer.duration;
+                
+                // Cập nhật thanh progress và knob nếu không đang kéo
+                if (!isNaN(duration) && !isDragging) {
+                    const progressPercent = (currentTime / duration) * 100;
+                    progressBar.style.width = progressPercent + '%';
+                    progressKnob.style.left = progressPercent + '%';
+                    
+                    // Cập nhật thời gian hiện tại
+                    currentTimeDisplay.textContent = formatTime(currentTime);
+                    totalTimeDisplay.textContent = formatTime(duration);
+                }
+            });
+            
+            // PHẦN CHỈNH SỬA CHÍNH: Cải thiện tính năng tua nhạc
+            // Đã sửa các vấn đề với sự kiện click và xử lý phần tử
+            
+            // Hiển thị progress knob khi hover vào progress bar
+            progressBarContainer.addEventListener('mouseenter', function() {
+                progressKnob.style.opacity = '1';
+            });
+            
+            progressBarContainer.addEventListener('mouseleave', function() {
+                if (!isDragging) {
+                    progressKnob.style.opacity = '0';
+                }
+            });
+        
+            // Xử lý click vào progress bar - LỖI CHÍNH ĐÃ ĐƯỢC SỬA Ở ĐÂY
+            progressBarContainer.addEventListener('mousedown', function(e) {
+                e.preventDefault(); // Ngăn chặn hành vi mặc định
+                console.log('Progress bar clicked at', e.clientX);
+                
+                const progressRect = this.getBoundingClientRect();
+                const offsetX = e.clientX - progressRect.left;
+                const percent = Math.max(0, Math.min(100, (offsetX / progressRect.width) * 100));
+                
+                console.log(`Click position: ${offsetX}px / ${progressRect.width}px = ${percent}%`);
+                
+                // Áp dụng vị trí ngay lập tức
+                const seekTime = (percent / 100) * audioPlayer.duration;
+                audioPlayer.currentTime = seekTime;
+                
+                // Cập nhật UI
+                progressBar.style.width = percent + '%';
+                progressKnob.style.left = percent + '%';
+                currentTimeDisplay.textContent = formatTime(seekTime);
+                
+                // Bắt đầu theo dõi kéo thả
+                isDragging = true;
+                progressKnob.classList.add('active');
+                
+                // Lưu trạng thái phát
+                wasPlaying = !audioPlayer.paused;
+                if (wasPlaying) {
+                    audioPlayer.pause();
+                }
+                
+                // Thêm event listeners cho kéo thả
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+            
+            // Hàm xử lý khi di chuyển chuột (drag)
+            function onMouseMove(e) {
+                if (isDragging) {
+                    const progressRect = progressBarContainer.getBoundingClientRect();
+                    const offsetX = Math.max(0, Math.min(e.clientX - progressRect.left, progressRect.width));
+                    let percent = (offsetX / progressRect.width) * 100;
+                    
+                    // Giới hạn trong khoảng 0-100%
+                    percent = Math.max(0, Math.min(100, percent));
+                    
+                    // Cập nhật vị trí của progress bar và knob
+                    progressBar.style.width = percent + '%';
+                    progressKnob.style.left = percent + '%';
+                    
+                    // Cập nhật thời gian hiển thị 
+                    if (!isNaN(audioPlayer.duration)) {
+                        const newTime = (percent / 100) * audioPlayer.duration;
+                        currentTimeDisplay.textContent = formatTime(newTime);
+                    }
+                }
+            }
+            
+            // Hàm xử lý khi thả chuột ra (drop)
+            function onMouseUp(e) {
+                if (isDragging) {
+                    const progressRect = progressBarContainer.getBoundingClientRect();
+                    const offsetX = Math.max(0, Math.min(e.clientX - progressRect.left, progressRect.width));
+                    let percent = (offsetX / progressRect.width) * 100;
+            
+                    // Giới hạn trong khoảng 0-100%
+                    percent = Math.max(0, Math.min(100, percent));
+            
+                    // Kiểm tra duration hợp lệ trước khi set currentTime
+                    if (!isNaN(audioPlayer.duration)) {
+                        const seekTime = (percent / 100) * audioPlayer.duration;
+                        audioPlayer.currentTime = seekTime;
+            
+                        // Cập nhật current time UI
+                        currentTimeDisplay.textContent = formatTime(seekTime);
+            
+                        // Nếu đang phát trước đó, tiếp tục phát
+                        if (wasPlaying) {
+                            audioPlayer.play().catch(err => console.error('Error resuming playback:', err));
+                        }
+                    } else {
+                        console.warn('audioPlayer.duration is NaN — chưa thể tua bài hát!');
+                    }
+            
+                    // Reset trạng thái kéo
+                    isDragging = false;
+                    progressKnob.classList.remove('active');
+            
+                    const isOverProgressBar = e.clientX >= progressRect.left && 
+                                              e.clientX <= progressRect.right &&
+                                              e.clientY >= progressRect.top &&
+                                              e.clientY <= progressRect.bottom;
+                    if (!isOverProgressBar) {
+                        progressKnob.style.opacity = '0';
+                    }
+            
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                    audioPlayer.dispatchEvent(new Event('timeupdate'));
+                }
+            }
+            
+            
+            // Xử lý các nút skip
+            skipBackBtn.addEventListener('click', function() {
+                audioPlayer.currentTime = 0; // Quay về đầu bài
+            });
+            
+            skipForwardBtn.addEventListener('click', function() {
+                // Xác định index của bài hát hiện tại
+                const currentIndex = tracks.findIndex(track => track.file === currentTrack.file);
+                if (currentIndex !== -1 && currentIndex < tracks.length - 1) {
+                    // Nếu không phải bài cuối cùng, chuyển đến bài tiếp theo
+                    loadAndPlayTrack(tracks[currentIndex + 1]);
+                }
+            });
+            
+            // Xử lý nút volume
+            volumeBtn.addEventListener('click', function() {
+                if (audioPlayer.muted) {
+                    audioPlayer.muted = false;
+                    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                } else {
+                    audioPlayer.muted = true;
+                    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                }
+            });
+            
+            // Hàm định dạng thời gian từ giây sang mm:ss
+            function formatTime(seconds) {
+                if (!isFinite(seconds)) return '00:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+            
+            // Xử lý khi bài hát kết thúc
+            audioPlayer.addEventListener('ended', function() {
+                // Xác định index của bài hát hiện tại
+                const currentIndex = tracks.findIndex(track => track.file === currentTrack.file);
+                
+                if (currentIndex !== -1 && currentIndex < tracks.length - 1) {
+                    // Nếu không phải bài cuối cùng, tự động chuyển đến bài tiếp theo
+                    loadAndPlayTrack(tracks[currentIndex + 1]);
+                } else {
+                    // Nếu là bài cuối cùng, reset player
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    progressBar.style.width = '0%';
+                    progressKnob.style.left = '0%';
+                    audioPlayer.currentTime = 0;
+                }
+            });
+            
+            // Load bài hát đầu tiên nếu có
+            if (tracks.length > 0) {
+                currentTrack = tracks[0];
+                updatePlayerUI(tracks[0]);
+                audioPlayer.src = tracks[0].file;
+                
+                // Đảm bảo metadata được tải
+                audioPlayer.addEventListener('loadedmetadata', function onFirstLoad() {
+                    console.log('Initial track metadata loaded');
+                    totalTimeDisplay.textContent = formatTime(audioPlayer.duration);
+                    audioPlayer.removeEventListener('loadedmetadata', onFirstLoad);
+                });
+                
+                audioPlayer.load();
+            }
+            
+            // Xử lý lỗi
+            audioPlayer.addEventListener('error', function(e) {
+                console.error('Audio error:', e);
+                alert('Có lỗi khi tải file âm thanh. Vui lòng kiểm tra lại đường dẫn file.');
+            });
+        });

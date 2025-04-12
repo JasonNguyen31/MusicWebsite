@@ -220,7 +220,7 @@ button {
 }
 
 .explore-playlists-btn {
-    background-color: #ff0000;
+    background-color: #9e2a2a;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 3px;
@@ -266,7 +266,7 @@ button {
     background-color: transparent;
     color: #ffffff;
     padding: 10px 20px;
-    border: 1px solid #ff0000;
+    border: 1px solid #9e2a2a;
     border-radius: 3px;
     font-size: 16px;
     font-weight: bold;
@@ -306,7 +306,7 @@ button {
 }
 
 .create-account-btn {
-    background-color: #ff0000;
+    background-color: #9e2a2a;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 3px;
@@ -323,7 +323,7 @@ button {
 }
 
 .signin-link {
-    color: #ff0000;
+    color: #9e2a2a;
     text-decoration: none;
     font-weight: bold;
 }
@@ -420,7 +420,7 @@ footer {
 .progress {
     height: 100%;
     width: 0%;
-    background-color: #ff0000;
+    background-color: #9e2a2a;
 }
 
 .track-info {

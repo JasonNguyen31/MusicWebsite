@@ -1,0 +1,605 @@
+/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    line-height: 1.5;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+/* Hero section */
+.hero {
+    background-color: #121212;
+    padding: 30px 20px 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 0 20px;
+}
+
+.hero-content {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 500px;
+    padding: 20px;
+}
+
+.logo-container {
+    float: left;
+    z-index: 10;
+    position: relative;
+    margin-left: 10px;
+}
+
+.hero-logo {
+    height: 60px;
+    width: 160px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7));
+}
+
+.auth-buttons {
+    float: right;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    position: relative;
+    margin-top: 11px;
+    margin-right: 10px;
+}
+
+.sign-in {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 6px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.create-account {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 7px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 11px;
+    font-weight: bold;
+}
+
+.for-artists {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 11px;
+}
+
+/* Hero slider */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 15px; 
+    overflow: hidden; 
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+}
+
+/* Dots navigation */
+.hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ffffff;
+}
+
+/* Search section */
+.search-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #121212;
+}
+
+.search-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    width: 60%;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    background-color: #282828;
+    color: white;
+}
+
+.search-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: #999;
+    font-size: 16px;
+}
+
+.or {
+    margin: 0 20px;
+    color: white;
+}
+
+.upload-own-btn {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.search-bar input:focus {
+    border: 1px solid white;
+}
+
+/* Trending section */
+.trending-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.trending-section h2 {
+    font-size: 24px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.explore-playlists-btn {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+
+/* Creators section */
+.creators-section {
+    background-color: #121212;
+    padding: 25px 20px;
+    color: #ffffff;
+}
+
+.creators-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.creators-text {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.creators-text h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.creators-text p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.find-out-btn {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.creators-image {
+    flex: 1;
+    text-align: right;
+}
+
+.creators-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Join section */
+.join-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.join-section h2 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.join-section p {
+    font-size: 26px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.create-account-btn {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    min-width: 180px;
+    text-transform: uppercase;
+}
+
+.signin-prompt {
+    color: white;
+    font-size: 14px;
+}
+
+.signin-link {
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.modal-register{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-login{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-register-content {
+    background-color: #fff;
+    margin: 5vh auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-login-content{
+    background-color: #fff;
+    margin: 5vh auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-top: 150px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.modal-register h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 24px;
+}
+
+.modal-login h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.dob-container {
+    display: flex;
+    gap: 10px;
+}
+
+.dob-container select {
+    flex: 1;
+}
+
+.account-type-container {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.terms input {
+    margin-top: 4px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #212121;
+}
+
+@media (max-width: 500px) {
+    .modal-content {
+        padding: 20px;
+        margin: 2vh auto;
+    }
+    
+    .dob-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+.modal-open {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width);
+}
+
+#signin-modal .modal-content{
+    margin-top: 140px;
+}
+
+#signin-modal {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+#signin-modal.visible {
+    opacity: 1;
+}
+
+/* Remember Me Checkbox Styling */
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 8px;
+    margin-top: 0;
+}
+
+.remember-me label {
+    display: inline;
+    margin-bottom: 0; 
+}
+
+/* Bottom Links Styling */
+.signup-prompt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Password Toggle */
+.create-account-link{
+    color:#06acf4;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center; 
+}
+
+.footer-links {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    justify-content: center; 
+}
+
+.footer-row a {
+    color: #b8b8b8;
+    text-decoration: none;
+    font-size: 12px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.language-selector {
+    font-size: 12px;
+    color: #06acf4;
+    margin-top: 10px;
+}
+
+.language-selector select {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 12px;
+}

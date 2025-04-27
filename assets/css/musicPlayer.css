@@ -1,0 +1,233 @@
+.music-player {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(33, 33, 33);
+    padding: 7px;
+    z-index: 100;
+    height: 51px;
+}
+
+.player-controls {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.control-btn:hover {
+    color: rgb(173, 173, 173);
+}
+
+.control-btn.play-pause {
+    width: 24px;
+    height: 24px;
+}
+
+.control-btn.shuffle, .control-btn.repeat {
+    opacity: 0.8;
+}
+
+.current-time{
+    color: white;
+    font-size: 12px;
+    min-width: 16px;
+    margin-left: 13px;
+    margin-right: 2px;
+}
+
+.total-time {
+    color: white;
+    font-size: 12px;
+    min-width: 16px;
+    margin-right: 13px;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 20px;
+    width: 195px; 
+    flex-shrink: 0;
+}
+
+.song-info img {
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    margin-right: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+    width: calc(100% - 50px);
+}
+
+.song-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.song-artist {
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.song-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.song-action-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.song-action-btn:hover {
+    color: rgb(173, 173, 173);
+}
+
+.volume-control {
+    position: relative;
+    width: 50px;
+    height: 5px;
+    background-color: #e0e0e0;
+    margin-left: 5px;
+}
+
+.volume-level {
+    height: 100%;
+    width: 70%;
+}
+
+.volume-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.volume-container::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 30px; 
+    pointer-events: none; 
+}
+
+.volume-slider {
+    position: absolute;
+    bottom: 30px;
+    left: 30%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 100px;
+    background-color: #f7f7f7;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    display: none; 
+    padding: 8px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 200;
+    justify-content: center;
+}
+
+.volume-bar {
+    width: 5px;
+    height: 85px;
+    background-color: #e0e0e0;
+    position: relative;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.volume-level {
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    bottom: 0; 
+    border-radius: 2px;
+}
+
+.progress-bar {
+    width: 50%;
+    height: 2px;
+    background-color: #e0e0e0;
+    position: relative;
+    border-radius: 50px;
+}
+
+.seek-bar {
+    width: 100%;
+    height: 2px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+.seek-bar::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, black var(--value, 0%), #e0e0e0 var(--value, 0%));
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.seek-bar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border-radius: 0;
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+}

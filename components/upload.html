@@ -1,0 +1,46 @@
+<div class="main-container">
+      <div class="header">
+            <div class="usage-info">
+                  <span id="storage-percentage">73% of free uploads used</span>
+                  <svg class="down-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6" />
+                  </svg>
+            </div>
+            <div class="usage-bar">
+                  <div class="usage-progress" style="width: 73%;"></div>
+            </div>
+            <button class="try-pro">Try Pro Unlimited</button>
+      </div>
+
+      <div class="drop-area" id="drop-zone">
+            <h2>Drag and drop your tracks & albums here</h2>
+            <button class="upload-btn" onclick="document.getElementById('file-input').click()">
+                  or choose files to upload
+            </button>
+            <input type="file" id="file-input" multiple style="display: none;" accept="audio/*">
+            
+            <div class="selected-files" id="selected-files-container">
+                  <div class="file-list" id="file-list"></div>
+            </div>
+            
+            <div class="options">
+                  <label>
+                  <input type="checkbox"> Make a playlist when multiple files are selected
+                  </label>
+                  
+                  <div class="radio-group">
+                  <label>Privacy:</label>
+                  <label>
+                        <input type="radio" name="privacy" value="public" checked> Public
+                  </label>
+                  <label>
+                        <input type="radio" name="privacy" value="private"> Private
+                  </label>
+                  </div>
+            </div>
+
+            <div class="upload-button-container">
+                  <button id="upload-files-btn" class="upload-files-btn" disabled>Upload</button>
+            </div>
+      </div>
+</div>
